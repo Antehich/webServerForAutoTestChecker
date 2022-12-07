@@ -5,9 +5,10 @@ import * as dotenv from 'dotenv'
 
 dotenv.config()
 const DB_URL = `mongodb+srv://${process.env.MONGODB_LOGIN}:${process.env.MONGODB_PASSWORD}@cluster0.x5reld8.mongodb.net/?retryWrites=true&w=majority`
+
 const app = express()
 app.use(express.json())
-app.use('/autotestchecker/api', router)
+app.use('/api', router)
 
 async function startApp () {
   try {
