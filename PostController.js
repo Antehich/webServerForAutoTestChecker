@@ -4,9 +4,9 @@ import Post from "./post.js";
 class PostController{
     async create(req, res) {
         try{
-            const {answer0,answer1,answer2,answer3,answer4,fullname} = req.body
-            const post = await Post.create({answer0,answer1,answer2,answer3,answer4,fullname})
-            console.log(req.body)
+            const {answer0,answer1,answer2,answer3,answer4,fullName} = req.body
+            const post = await Post.create({answer0,answer1,answer2,answer3,answer4,fullName})
+            console.log(post)
             res.status(200).json(post)
         } catch (e){
             res.status(500).json(e)
