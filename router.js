@@ -9,4 +9,4 @@ router.get('/posts/:id', PostController.getOne)
 router.put('/posts', PostController.update)
 router.delete('/posts/:id', PostController.delete)
 
-export default router;
+export default router

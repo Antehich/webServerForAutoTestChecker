@@ -6,8 +6,8 @@ class PostController{
         try{
             const {answer0,answer1,answer2,answer3,answer4,fullname} = req.body
             const post = await Post.create({answer0,answer1,answer2,answer3,answer4,fullname})
+            console.log(req.body)
             res.status(200).json(post)
-            console.log(post)
         } catch (e){
             res.status(500).json(e)
         }
