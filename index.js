@@ -4,9 +4,8 @@ import router from "./router.js"
 import * as dotenv from 'dotenv'
 
 
-
-const PORT = 5500
 dotenv.config()
+const PORT = process.env.PORT
 const DB_URL = `mongodb+srv://${process.env.MONGODB_LOGIN}:${process.env.MONGODB_PASSWORD}@cluster0.x5reld8.mongodb.net/?retryWrites=true&w=majority`
 const app = express()
 app.use(express.json())
