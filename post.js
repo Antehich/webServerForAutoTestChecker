@@ -6,7 +6,7 @@ const Post = new mongoose.Schema({
         answer2: {type: String},
         answer3: {type: String},
         answer4: {type: String},
-        fullName: {type: String},
+        name: {type: String},
 })
 
 export default mongoose.model('Post', Post)
