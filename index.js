@@ -1,6 +1,7 @@
 import express from 'express'
 import mongoose from 'mongoose'
-import router from "./router.js"
+import userRouter from "./userRouter.js"
+import appRouter from "./appRouter.js"
 import * as dotenv from 'dotenv'
 import cors from 'cors'
 
@@ -11,12 +12,12 @@ const DB_URL = `mongodb+srv://${process.env.MONGODB_LOGIN}:${process.env.MONGODB
 const app = express()
 
 const corsOptions = {
-    origin : ['http://localhost:5000'],
+    origin : ['http://localhost:3000' ]
 }
 
 app.use(express.json())
-app.use('/api',cors(corsOptions), router)
-
+app.use('/api/userRequests',cors(corsOptions), userRouter)
+app.use('/api/appRequests',cors(corsOptions), appRouter)
 
 
 async function startApp(){

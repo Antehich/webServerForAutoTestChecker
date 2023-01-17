@@ -1,12 +1,13 @@
-import Post from "./post.js";
-import checker from "./checker.js";
+import userRequest from "./userRequest.js";
 
 
-class PostController{
+
+class UserRequestController {
     async create(req, res) {
         try{
-            await Post.create(req.body)
-            res.status(200).json(checker(req.body))
+            await userRequest.create(req.body)
+            res.status(200).json(req.body)
+            console.log(req.body)
         } catch (e){
             res.status(500).json(e)
         }
@@ -14,20 +15,20 @@ class PostController{
 
     async getAll(req, res){
         try {
-            const posts = await Post.find()
+            const posts = await userRequest.find()
             return res.json(posts);
         } catch (e) {
             res.status(500).json(e)
         }
     }
 
-    async getOne(req, res){
+    async getOne(req, res ){
         try {
             const {id} = req.params
             if (!id){
                 return res.status(400).json({message: "id is not valid"})
             }
-            const post = await Post.findById(id)
+            const post = await userRequest.findById(id)
             return res.json(post)
         } catch (e) {
             res.status(500).json(e)
@@ -40,7 +41,7 @@ class PostController{
             if (!post._id){
                 return res.status(400).json({message: "id is not valid"})
             }
-            const updatedPost = await Post.findByIdAndUpdate(post._id, post, {new : true})
+            const updatedPost = await userRequest.findByIdAndUpdate(post._id, post, {new : true})
             return res.json(updatedPost);
         } catch (e) {
             res.status(500).json(e)
@@ -53,7 +54,7 @@ class PostController{
             if (!id){
                 return res.status(400).json({message: "id is not valid"})
             }
-            const post = await Post.findByIdAndDelete(id)
+            const post = await userRequest.findByIdAndDelete(id)
             return res.json(post)
         } catch (e) {
             res.status(500).json(e)
@@ -61,4 +62,4 @@ class PostController{
     }
 
 }
-export default new PostController();
+export default new UserRequestController();
