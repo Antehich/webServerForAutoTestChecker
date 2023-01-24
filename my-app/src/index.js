@@ -9,8 +9,8 @@ async function getAllQuestions(){
     })
     if (response.ok) {
        const json = await response.json()
-        console.log(json[1])
-        return json
+        console.log(json)
+        return json;
     } else {
         console.log('error')
         return null
@@ -19,8 +19,11 @@ async function getAllQuestions(){
 
 const allQuestions = getAllQuestions()
 
+
+
 class QuestionTemplate {
-    constructor(questionText, answerOption0, answerOption1, answerOption2, answerOption3, rightOption) {
+    constructor(_id ,questionText, answerOption0, answerOption1, answerOption2, answerOption3, rightOption) {
+        this._id=_id;
         this.questionText = questionText;
         this.answerOption0 = answerOption0;
         this.answerOption1 = answerOption1;
@@ -29,10 +32,15 @@ class QuestionTemplate {
         this.rightOption = rightOption;
     }
 }
-
 function getRandomQuestion() {
-    return new QuestionTemplate(allQuestions[1])
+    const p = allQuestions[0]
+    console.log(p)
+    //const q = new QuestionTemplate(p._id, p.questionText, p.answerOption0, p.answerOption1, p.answerOption2, p.answerOption3, p.rightOption)
+    //console.log(q)
+    //return q
+    //return new QuestionTemplate(allQuestions[Math.floor(Math.random()*allQuestions.length)])
 }
+getRandomQuestion()
 
 class Question extends React.Component{
     render() {
@@ -69,6 +77,6 @@ class Test extends React.Component {
 //========================================
 
 const test = ReactDOM.createRoot(document.getElementById("test"))
-test.render(<Test />);
+//test.render(<Test />);
 
 
