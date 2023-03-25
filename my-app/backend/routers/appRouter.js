@@ -1,5 +1,5 @@
 import Router from 'express'
-import appRequestController from './appRequestController.js'
+import appRequestController from '../requests/appRequestController.js'
 
 const appRouter = new Router()
 
